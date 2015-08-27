@@ -109,4 +109,11 @@ data invalid. For instance if you have a large base64 string in your JSON, it wi
 by this. To avoid this being an issue, make sure you have a way to output the whole untouched
 thing should you need it.
 
+
+=head1 SEE ALSO
+
+L<String::Truncate>
+
+=for HTML <a href="https://travis-ci.org/jeteve/String-Snip"><img src="https://travis-ci.org/jeteve/String-Snip.svg?branch=master"></a>
+
 =cut
