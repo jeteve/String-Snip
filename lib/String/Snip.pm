@@ -18,6 +18,7 @@ use String::Truncate;
         $opts ||= {};
         my $max_length = $opts->{max_length} || 2000;
         my $short_length = $opts->{short_length} || 100;
+        my $substr_regex = $opts->{substr_regex} || '\\S+';
 
         local $the_closure = sub{
             my ($str) = @_;
@@ -30,7 +31,7 @@ use String::Truncate;
                                              marker => ' ..[SNIP '.$chardiff.'chars].. '
                                          });
         };
-        $string =~ s/(\S+)/_hook_closure($1)/egs;
+        $string =~ s/($substr_regex)/_hook_closure($1)/egs;
         return $string;
     }
 }
@@ -73,6 +74,11 @@ Maximum length of a substring. After this length, it gets truncated to a string 
 =item short_length
 
 Length of shortened substrings. Defaults to 100.
+
+=item substr_regex
+
+The regex that captures the substring of this string. Defaults to C<< \S+ >>, which will capture any consecutive non-space
+strings.
 
 =back
 
