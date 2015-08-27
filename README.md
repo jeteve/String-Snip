@@ -60,3 +60,7 @@ If you use that on structured data (like a JSON structure), this might render yo
 data invalid. For instance if you have a large base64 string in your JSON, it will be broken
 by this. To avoid this being an issue, make sure you have a way to output the whole untouched
 thing should you need it.
+
+# SEE ALSO
+
+[String::Truncate](https://metacpan.org/pod/String::Truncate)
