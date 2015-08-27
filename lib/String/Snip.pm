@@ -19,16 +19,18 @@ use String::Truncate;
         my $max_length = $opts->{max_length} || 2000;
         my $short_length = $opts->{short_length} || 100;
         my $substr_regex = $opts->{substr_regex} || '\\S+';
+        if( $max_length < 100 ){ $max_length = 100; }
+        if( $short_length < 50 ){ $short_length = 50 };
 
         local $the_closure = sub{
             my ($str) = @_;
             if( length($str) < $max_length ){
                 return $str;
             }
-            my $chardiff = length($str) - $short_length;
+            my $chardiff = length($str);
             return String::Truncate::elide($str, $short_length,
                                            { truncate => 'middle',
-                                             marker => ' ..[SNIP '.$chardiff.'chars].. '
+                                             marker => ' ..[SNIP (was '.$chardiff.'chars)].. '
                                          });
         };
         $string =~ s/($substr_regex)/_hook_closure($1)/egs;
@@ -70,15 +72,17 @@ Options:
 =item max_length
 
 Maximum length of a substring. After this length, it gets truncated to a string of C<< short_length >> characters. Default to 2000.
+There is a hard bottom limit to 100.
 
 =item short_length
 
 Length of shortened substrings. Defaults to 100.
+There is a hard bottom limit to 50.
 
 =item substr_regex
 
 The regex that captures the substring of this string. Defaults to C<< \S+ >>, which will capture any consecutive non-space
-strings.
+strings. If you want this to capture multiline large strings, you can use C<< [\\S\\n]+ >>.
 
 =back
 
