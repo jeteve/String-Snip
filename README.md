@@ -2,7 +2,7 @@
 
 String::Snip - Shorten large substrings in your strings
 
-# SYNOSPIS
+# SYNOPSIS
 
     use String::Snip;
 
@@ -13,7 +13,7 @@ String::Snip - Shorten large substrings in your strings
 
 ## snip
 
-Pure function. Shortens long substrings of the given string.
+Pure function. Returns the given string with its long substrings shortened.
 
 Usage:
 
@@ -26,12 +26,12 @@ Options:
 - max\_length
 
     Maximum length of a substring. After this length, it gets truncated to a string of `short_length` characters. Default to 2000.
-    There is a hard bottom limit to 100.
+    There is a hard bottom limit at 100.
 
 - short\_length
 
     Length of shortened substrings. Defaults to 100.
-    There is a hard bottom limit to 50.
+    There is a hard bottom limit at 50.
 
 - substr\_regex
 

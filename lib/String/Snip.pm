@@ -46,7 +46,7 @@ __END__
 
 String::Snip - Shorten large substrings in your strings
 
-=head1 SYNOSPIS
+=head1 SYNOPSIS
 
  use String::Snip;
 
@@ -57,7 +57,7 @@ String::Snip - Shorten large substrings in your strings
 
 =head2 snip
 
-Pure function. Shortens long substrings of the given string.
+Pure function. Returns the given string with its long substrings shortened.
 
 Usage:
 
@@ -72,12 +72,12 @@ Options:
 =item max_length
 
 Maximum length of a substring. After this length, it gets truncated to a string of C<< short_length >> characters. Default to 2000.
-There is a hard bottom limit to 100.
+There is a hard bottom limit at 100.
 
 =item short_length
 
 Length of shortened substrings. Defaults to 100.
-There is a hard bottom limit to 50.
+There is a hard bottom limit at 50.
 
 =item substr_regex
 
